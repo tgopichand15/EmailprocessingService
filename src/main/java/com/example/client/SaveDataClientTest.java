@@ -1,7 +1,10 @@
 package com.example.client;
 
+import com.example.EmailProcessingservice.GmailClient;
 import com.example.entities.Issues;
 import com.example.util.HibernateUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.example.entities.IssuesToBeProcessedforSolutions;
@@ -11,12 +14,19 @@ import java.util.Date;
 
 public class SaveDataClientTest {
 
-	 private static void createNewIssue(HistoricalIssue h){
+	private static final Logger logger = LogManager.getLogger(SaveDataClientTest.class);
+
+
+	private static void createNewIssue(HistoricalIssue h){
+
+		logger.info("creating new Issues type to be inserted to db")
 
 	    try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 	    	
 	    	createHistoricalIssue(session,h);
+	    	logger.info("created issues which was inserted into dattabase");
 		} catch (HibernateException e) {
+	    	logger.error("creating Historical issue failed with exception"+e.printStackTrace());
 			e.printStackTrace();
 		}
 	  }
@@ -24,15 +34,18 @@ public class SaveDataClientTest {
 
 
 	private static void createEmployee(Session session) {
+		logger.info("creating employee which is to be inserted into DB")
 		session.beginTransaction();
 		Integer id =(Integer)session.save(getIssue());
 		System.out.println("Employee is created  with Id::"+id);
+		logger.info("Employee creation in DB succeded with following id "+id);
 		session.getTransaction().commit();
 		
 	}
 
 
 	private static void createHistoricalIssue(Session session,HistoricalIssue h) {
+		logger.
 		session.beginTransaction();
 		Integer id =(Integer)session.save(h);
 		System.out.println("HistoricalIssue is created  with Id::"+id);

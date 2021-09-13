@@ -77,7 +77,7 @@ public class GmailClient {
                             System.out.println("From: " + message.getFrom()[0]);
                             System.out.println("Text: " + message.getContent().toString());
 
-
+                          logger.info("adding fetched Message to arraylist ")
                             if(message.getSubject() == "Issue"){
                                 al.add(message.getContent().toString());
                             }
@@ -87,6 +87,7 @@ public class GmailClient {
                     //close the store and folder objects
 
 
+                    logger.info("closing email stream");
                     emailFolder.close(false);
                     store.close();
                     return al;
@@ -101,6 +102,7 @@ public class GmailClient {
                     logger.error("messagging exception");
                     e.printStackTrace();
                 }
+                logger.info("returning arraylist");
                 return al;
             }
 
