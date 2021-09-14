@@ -2,17 +2,24 @@ package com.example.client;
 
 import com.example.entities.Issues;
 import com.example.util.HibernateUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 public class FetchDataClientTest {
 
+	private static final Logger logger = LogManager.getLogger(FetchDataClientTest.class);
+
 	public static void main(String[] args) {
 		Issues issues = null;
+		logger.info("getting  issue with id 1 from DB");
 	    try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 	    	issues = session.get(Issues.class, 1);
+	    	logger.infoe("fetched value is "+issues);
 	    	System.out.println(issues);
 		} catch (HibernateException e) {
+	    	logger.error("Exception while fetching value from Issues table "+e.printStackTrace());
 			e.printStackTrace();
 		}
 
@@ -30,6 +37,8 @@ public class FetchDataClientTest {
 
 
         /*private static void fetchUpdateIssueByHostname(Session session){
+
+         logger.info("updating salary value of record in Issues with id 1");
 			Employee e=session.get(Employee.class,1);
 
 			if(e==null){
@@ -42,6 +51,7 @@ public class FetchDataClientTest {
 				session.update(e);
 
 				session.getTransaction().commit();
+				logger.info("updated salary value successfully");
 				System.out.println(e);
 			}
 		}*/

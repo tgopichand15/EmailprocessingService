@@ -19,10 +19,6 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 	private static final Logger LOGGER = LogManager.getLogger(EmailProcessingserviceApplication.class);
 
 
-
-
-
-
 	public static void main(String[] args)
 	{
 		ApplicationContext ctx = SpringApplication.run(EmailProcessingserviceApplication.class, args);
@@ -35,12 +31,15 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 
 		//data removing duplicates
 
+		logger.info("fetching latest emaails from Gmail client and getting issue data from rules service ");
+
 		HashMap<String,Integer> h=fetchfields.getIssueData(gmailclient.check());
 
 
 		@Autowired
 		private SaveDataClientTest savedataclienttest;
 
+		logger.info("fetching existing rules from Rules service so that it can be compared with Mail data");
 		@Autowired
 		private FetchRules fetchrules;
 		//fetching existing rules from Rules service
@@ -50,6 +49,7 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
         @Autowired
 		private FetchIssuesTobeTakenAction fetchissues;
 
+        logger.info("fetching issues to be taken action from end of soluton service");
         ArrayList<Issues> a=fetchissues.getIssues();
 
 

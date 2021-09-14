@@ -45,13 +45,12 @@ public class SaveDataClientTest {
 
 
 	private static void createHistoricalIssue(Session session,HistoricalIssue h) {
-		logger.
+		logger.info("creating a historical issue into DB);
 		session.beginTransaction();
 		Integer id =(Integer)session.save(h);
 		System.out.println("HistoricalIssue is created  with Id::"+id);
+		logger.info("HistoricalIssue creation is successful with id "+id);
 		session.getTransaction().commit();
-
-
 
 	}
 
@@ -72,6 +71,9 @@ public class SaveDataClientTest {
 
 
 	private static void updateEmployeeById(Session session){
+
+		logger.info("getting data of employee with id 1")
+
 		Employee e=session.get(Employee.class,1);
 
 		if(e==null){
@@ -83,6 +85,8 @@ public class SaveDataClientTest {
 
 			session.update(e);
 
+			logger.info("updated data of record with id" + id );
+
 			session.getTransaction().commit();
 			System.out.println(e);
 		}
@@ -91,6 +95,8 @@ public class SaveDataClientTest {
 
 	private static HistoricalIssues addIssue(HashMap<String,integer> h) {
 
+
+		logger.info("inserting issues to Db from addIssue() method");
 
 		Iterator hmIterator = h.entrySet().iterator();
 
@@ -111,6 +117,7 @@ public class SaveDataClientTest {
 			hissue.setCount(issueCount);
 
 			createNeIssue(hissue);
+			looger.info("valuess to historicalIssues inserted from addIssue method");
 			//flushing  alues in object
 			hissue=null;
 
@@ -118,10 +125,13 @@ public class SaveDataClientTest {
 		}
 
 		private static void insertIssuestobeProcessedBysolutionService(HashMap<String,String> issues){
+			logger.info("inserting issues to be processed by solutionservice");
             try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
                 createHistoricalIssue(session);
+                looger.info("insertion onto SolutionService Db succeded");
             } catch (HibernateException e) {
+            	logger.error("insertion into Solutonservice Db failed");
                 e.printStackTrace();
             }
         }
@@ -130,15 +140,18 @@ public class SaveDataClientTest {
 
 		//insert unresolved issues after action service
 		public static void insertUnresovedIsseus(List<UnresolvedIssues> l){
+			logger.info("inserting unreolved issues into DB table");
 			try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 				foreach(UnresolvedIssues u:l){
 					session.beginTransaction();
 					Integer id = (Integer) session.save(u);
 					System.out.println("unresolvedIssues is created  with Id::" + id);
+					logger.info("insertion succedded with id "+id);
 					session.getTransaction().commit();
 				}
 			}
 			catch (HibernateException e) {
+				logger.error("insertion into unresolvedIssues failed with Exception "+e.printStackTrace());
 				e.printStackTrace();
 			}
 
@@ -146,6 +159,9 @@ public class SaveDataClientTest {
 
 		//inserting data to DB
 		public static IssuesToBeProcessedforSolutions createIssueforProcessingintoDB(HashMap<String,String> issue>){
+
+
+			logger.info("creating historical issues into DB");
 		    Iterator i=issue.entrySet().iterator();
 
 		    Issues i=new Issues();
@@ -154,10 +170,11 @@ public class SaveDataClientTest {
 		    	i.setIssuename(key);
 		    	i.setHostname(i.get(key));
 		    	i.setIsProcessed(false);
-				try(Session session = HibernateUtil.getSessionFactory().openSession()) {
-
+				try(Session session = HibernateUtil.getSessionFactory().openSession())
 					createHistoricalIssue(i);
+				    logger.info("historicalissue creation succeded");
 				} catch (HibernateException e) {
+		    	    logger.error("insertion of Historical issues failed with exception "+e.printStackTrace());
 					e.printStackTrace();
 				}
 
