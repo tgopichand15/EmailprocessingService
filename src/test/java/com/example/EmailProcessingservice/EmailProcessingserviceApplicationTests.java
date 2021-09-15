@@ -10,4 +10,14 @@ class EmailProcessingserviceApplicationTests {
 	void contextLoads() {
 	}
 
+
+
+
+	@Test
+	public void test Gmail(){
+		assertequals()
+	}
+
+
+
 }
