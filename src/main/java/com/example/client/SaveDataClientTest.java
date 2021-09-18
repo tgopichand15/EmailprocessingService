@@ -8,10 +8,11 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.example.entities.IssuesToBeProcessedforSolutions;
+import org.springframework.stereotype.Component;
 
 
 import java.util.Date;
-
+@Component
 public class SaveDataClientTest {
 
 	private static final Logger logger = LogManager.getLogger(SaveDataClientTest.class);

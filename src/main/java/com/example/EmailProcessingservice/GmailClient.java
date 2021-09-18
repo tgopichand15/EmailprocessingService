@@ -77,7 +77,7 @@ public class GmailClient {
                             System.out.println("From: " + message.getFrom()[0]);
                             System.out.println("Text: " + message.getContent().toString());
 
-                          logger.info("adding fetched Message to arraylist ")
+                          logger.info("adding fetched Message to arraylist ");
                             if(message.getSubject() == "Issue"){
                                 al.add(message.getContent().toString());
                             }
