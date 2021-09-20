@@ -1,7 +1,6 @@
 package com.example.EmailProcessingservice;
 
 import com.example.RulesService.entities.ExistingIssues;
-import com.example.client.FetchDataClientTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -41,13 +40,13 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 
 		logger.info("fetching existing rules from Rules service so that it can be compared with Mail data");
 		@Autowired
-		private FetchRules fetchrules;
+		private FetchRulesClient fetchrules;
 		//fetching existing rules from Rules service
 		ArrayList<ExistingIssues> rules=fetchrules.getIssues();
 
 
         @Autowired
-		private FetchIssuesTobeTakenAction fetchissues;
+		private SolutionServiceClient fetchissues;
 
         logger.info("fetching issues to be taken action from end of soluton service");
         ArrayList<Issues> a=fetchissues.getIssues();

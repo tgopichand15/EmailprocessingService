@@ -1,6 +1,5 @@
 package com.example.client;
 
-import com.example.EmailProcessingservice.GmailClient;
 import com.example.entities.Issues;
 import com.example.util.HibernateUtil;
 import org.apache.logging.log4j.LogManager;
@@ -11,11 +10,10 @@ import com.example.entities.IssuesToBeProcessedforSolutions;
 import org.springframework.stereotype.Component;
 
 
-import java.util.Date;
 @Component
-public class SaveDataClientTest {
+public class SaveDataClient {
 
-	private static final Logger logger = LogManager.getLogger(SaveDataClientTest.class);
+	private static final Logger logger = LogManager.getLogger(SaveDataClient.class);
 
 
 	private static void createNewIssue(HistoricalIssue h){

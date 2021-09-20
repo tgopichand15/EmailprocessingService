@@ -6,7 +6,7 @@ import javax.xml.ws.WebServiceProvider;
 
 @Entity
 @Table(name="Issues")
-public class Issues {
+public class Issue {
 
 
     @Id

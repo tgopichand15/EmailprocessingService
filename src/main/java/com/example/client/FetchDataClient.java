@@ -9,9 +9,9 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FetchDataClientTest {
+public class FetchDataClient {
 
-	private static final Logger logger = LogManager.getLogger(FetchDataClientTest.class);
+	private static final Logger logger = LogManager.getLogger(FetchDataClient.class);
 
 	public static void main(String[] args) {
 		Issues issues = null;

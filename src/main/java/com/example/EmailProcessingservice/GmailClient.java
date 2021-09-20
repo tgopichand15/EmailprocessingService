@@ -59,7 +59,8 @@ public class GmailClient {
 
                     // Fetch unseen messages from inbox folder
                     //need to check
-                    Message[] messages = emailFolder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false));
+                    Message[] messages = emailFolder
+                            .search(new FlagTerm(new Flags(Flags.Flag.SEEN), false));
 
 
                     // retrieve the messages from the folder in an array and print it

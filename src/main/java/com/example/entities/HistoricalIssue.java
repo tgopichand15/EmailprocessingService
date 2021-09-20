@@ -3,11 +3,11 @@ package com.example.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="HistoricalIssues")
-public class HistoricalIssues {
+@Table(name="HistoricalIssue)
+public class HistoricalIssue {
 
     @Id
-    @Column(name="HistoricalIssie_id")
+    @Column(name="HistoricalIssue_id")
     @GeneratedValue(Strategy=GenerationType.IDENTITy)
     int id;
 
@@ -54,7 +54,7 @@ public class HistoricalIssues {
 
     @Override
     public String toString() {
-        return "HistoricalIssues{" +
+        return "HistoricalIssue{" +
                 "id=" + id +
                 ", Issue='" + Issue + '\'' +
                 ", Hostname='" + Hostname + '\'' +
