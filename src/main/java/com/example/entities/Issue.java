@@ -18,7 +18,7 @@ public class Issue {
     private String Issuename;
 
     @column(name="hostname")
-    private String hostname:
+    private String hostname;
 
     @Column(name = "isProcessed")
     private int isProcessed;

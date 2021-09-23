@@ -18,15 +18,14 @@ public class FetchFields {
     String Description="";
     String Threshold="";
 
-    logger.info("fetching all required fields from Mail content so that they can be processed to next service");
+    //logger.info("fetching all required fields from Mail content so that they can be processed to next service");
 
     HashMap<String,Integer> hm=new HashMap<String,Integer>();
 
     //fetches ip address from input mail mail content
     private static String fetchIpFromString(String a){
-        logger.info("fetching Ip pattern from the email content";
-        String IPADDRESS_PATTERN =
-                "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
+        logger.info("fetching Ip pattern from the email content");
+        String IPADDRESS_PATTERN ="(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
 
         Pattern pattern = Pattern.compile(IPADDRESS_PATTERN);
         Matcher matcher = pattern.matcher(a);
@@ -51,7 +50,7 @@ public class FetchFields {
            Issues i=query1.getUniqueResult();
 
            if(i!=null){
-               rerurn true;
+               return true;
            }
            else {
                return false;
@@ -59,7 +58,7 @@ public class FetchFields {
 
         }
         catch(HibernateException e){
-            logger.info("got an exception while checking if issue is already processed or not "+e,.printStackTrace());
+            logger.info("got an exception while checking if issue is already processed or not "+e.printStackTrace());
             e.printStackTrace();
 
         }

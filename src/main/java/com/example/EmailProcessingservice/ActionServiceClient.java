@@ -1,8 +1,13 @@
 package com.example.EmailProcessingservice;
 
+import com.example.client.SaveDataClient;
+import com.example.entities.UnresolvedIssue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 public class ActionServiceClient {
 
@@ -10,21 +15,21 @@ public class ActionServiceClient {
 
     private final String ACTION_URL = "https://localhost:8080/Action_service/get";
 
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
-    private SaveDataClientTest savedataclienttest;
+    private SaveDataClient savedataclienttest;
 
     @Autowired
-    public ActionServiceClient(RestTemplate r, SaveDataClientTest s) {
-        this.restTe
+    public ActionServiceClient(RestTemplate r, SaveDataClient s) {
+        this.restTemplate=r;
+        this.savedataclienttest=s;
     }
 
 
-    public  List<unResolvedIssues> getnresolvedIssues(){
+    public List<UnresolvedIssue> getnresolvedIssues(){
 
         logger.info("ferching list of unresolved issues from Action service via Interservice communincation calling api /Action_service");
 
-        new RestTemplate()
 
         //Parse the string after getting the response
         List<unResolvedIssues> l = restTemplate.getForObject(actionServiceGetIssuesEndpointUrl, String.class);
@@ -38,7 +43,7 @@ public class ActionServiceClient {
 
 
 
-    private void insertIssues (SaveDataClientTest savedataclienttest){
+    private void insertIssues (SaveDataClient savedataclienttest){
 
         logger.info("inserting unresolved issues into Db for later processing");
 

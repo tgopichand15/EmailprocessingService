@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import com.example.entities.IssuesToBeProcessedforSolutions;
 import org.springframework.stereotype.Component;
 
 
@@ -18,7 +17,7 @@ public class SaveDataClient {
 
 	private static void createNewIssue(HistoricalIssue h){
 
-		logger.info("creating new Issues type to be inserted to db")
+		logger.info("creating new Issues type to be inserted to db");
 
 	    try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 	    	
@@ -33,7 +32,7 @@ public class SaveDataClient {
 
 
 	private static void createEmployee(Session session) {
-		logger.info("creating employee which is to be inserted into DB")
+		logger.info("creating employee which is to be inserted into DB");
 		session.beginTransaction();
 		Integer id =(Integer)session.save(getIssue());
 		System.out.println("Employee is created  with Id::"+id);
@@ -44,7 +43,7 @@ public class SaveDataClient {
 
 
 	private static void createHistoricalIssue(Session session,HistoricalIssue h) {
-		logger.info("creating a historical issue into DB);
+		logger.info("creating a historical issue into DB");
 		session.beginTransaction();
 		Integer id =(Integer)session.save(h);
 		System.out.println("HistoricalIssue is created  with Id::"+id);
@@ -71,7 +70,7 @@ public class SaveDataClient {
 
 	private static void updateEmployeeById(Session session){
 
-		logger.info("getting data of employee with id 1")
+		logger.info("getting data of employee with id 1");
 
 		Employee e=session.get(Employee.class,1);
 
@@ -103,7 +102,7 @@ public class SaveDataClient {
 
 		while (hmIterator.hasNext()) {
 			Map.Entry mapElement = (Map.Entry)hmIterator.next();
-			int count = (int)mapElement.getValue()
+			int count = (int)mapElement.getValue();
 			System.out.println(mapElement.getKey() + " : " + count);
 
 			String[] a=mapElement.getKey().split(" ");
@@ -123,64 +122,63 @@ public class SaveDataClient {
 
 		}
 
-		private static void insertIssuestobeProcessedBysolutionService(HashMap<String,String> issues){
-			logger.info("inserting issues to be processed by solutionservice");
-            try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+	}
 
-                createHistoricalIssue(session);
-                looger.info("insertion onto SolutionService Db succeded");
-            } catch (HibernateException e) {
-            	logger.error("insertion into Solutonservice Db failed");
-                e.printStackTrace();
-            }
-        }
-
-
-
-		//insert unresolved issues after action service
-		public static void insertUnresovedIsseus(List<UnresolvedIssues> l){
-			logger.info("inserting unreolved issues into DB table");
-			try(Session session = HibernateUtil.getSessionFactory().openSession()) {
-				foreach(UnresolvedIssues u:l){
-					session.beginTransaction();
-					Integer id = (Integer) session.save(u);
-					System.out.println("unresolvedIssues is created  with Id::" + id);
-					logger.info("insertion succedded with id "+id);
-					session.getTransaction().commit();
-				}
+	//insert unresolved issues after action service
+	public static void insertUnresovedIsseus(List<UnresolvedIssues> l){
+		logger.info("inserting unreolved issues into DB table");
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+			for(UnresolvedIssue u : l){
+				session.beginTransaction();
+				Integer id = (Integer) session.save(u);
+				System.out.println("unresolvedIssues is created  with Id::" + id);
+				logger.info("insertion succedded with id "+id);
+				session.getTransaction().commit();
 			}
-			catch (HibernateException e) {
-				logger.error("insertion into unresolvedIssues failed with Exception "+e.printStackTrace());
+		}
+		catch (HibernateException e) {
+			logger.error("insertion into unresolvedIssues failed with Exception "+e.printStackTrace());
+			e.printStackTrace();
+		}
+
+	}
+
+	//inserting data to DB
+	public static IssuesToBeProcessedforSolutions createIssueforProcessingintoDB(HashMap<String,String> issue) {
+
+
+		logger.info("creating historical issues into DB");
+		Iterator i = issue.entrySet().iterator();
+
+		Issues i = new Issues();
+		while (i.hasNext()) {
+			String key = issues.getNext();
+			i.setIssuename(key);
+			i.setHostname(i.get(key));
+			i.setIsProcessed(false);
+			try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+				createHistoricalIssue(i);
+				logger.info("historicalissue creation succeded");
+			} catch (HibernateException e) {
+				logger.error("insertion of Historical issues failed with exception " + e.printStackTrace());
 				e.printStackTrace();
 			}
 
+
 		}
-
-		//inserting data to DB
-		public static IssuesToBeProcessedforSolutions createIssueforProcessingintoDB(HashMap<String,String> issue>){
+	}
 
 
-			logger.info("creating historical issues into DB");
-		    Iterator i=issue.entrySet().iterator();
+	private static void insertIssuestobeProcessedBysolutionService(HashMap<String,String> issues){
+		logger.info("inserting issues to be processed by solutionservice");
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-		    Issues i=new Issues();
-		    while(i.hasNext()){
-		    	String key=issues.getNext();
-		    	i.setIssuename(key);
-		    	i.setHostname(i.get(key));
-		    	i.setIsProcessed(false);
-				try(Session session = HibernateUtil.getSessionFactory().openSession())
-					createHistoricalIssue(i);
-				    logger.info("historicalissue creation succeded");
-				} catch (HibernateException e) {
-		    	    logger.error("insertion of Historical issues failed with exception "+e.printStackTrace());
-					e.printStackTrace();
-				}
-
-
-			}
-        }
-
+			createHistoricalIssue(session);
+			looger.info("insertion onto SolutionService Db succeded");
+		} catch (HibernateException e) {
+			logger.error("insertion into Solutonservice Db failed");
+			e.printStackTrace();
+		}
 	}
 
 }

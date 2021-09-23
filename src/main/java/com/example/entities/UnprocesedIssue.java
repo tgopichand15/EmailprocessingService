@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Issues_to_be_processed")
-public class IssuesToBeProcessedforSolutions {
+public class UnprocesedIssue {
 
     @Id
     @Column(name="id")
@@ -66,7 +66,7 @@ public class IssuesToBeProcessedforSolutions {
 
     @Override
     public String toString() {
-        return "IssuesToBeProcessedforSolutions{" +
+        return "UnprocessedIssues{" +
                 "id=" + id +
                 ", issueName='" + issueName + '\'' +
                 ", hostname='" + hostname + '\'' +

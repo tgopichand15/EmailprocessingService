@@ -18,8 +18,7 @@ public class GmailClient {
     private static final Logger logger = LogManager.getLogger(GmailClient.class);
 
 
-    public static ArrayList<String> check()
-            {
+    public static ArrayList<String> check() {
                 ArrayList<String> al=new ArrayList<String>();
 
 

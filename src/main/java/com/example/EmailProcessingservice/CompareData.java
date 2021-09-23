@@ -1,16 +1,20 @@
 package com.example.EmailProcessingservice;
 
 import com.example.RulesService.entities.ExistingIssues;
+import com.example.entities.ExistingIssue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CompareEmailandRulesData {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class CompareData {
 
     private static final Logger logger = LogManager.getLogger(CompareEmailandRulesData.class);
 
 
 
-    public HashMap<String,String> compareEmailAndRulesdata(HashMap<String,Integer> hm,ArrayList<ExistingIssues> al){
+    public HashMap<String,String> compareEmailAndRulesdata(HashMap<String,Integer> hm, ArrayList<ExistingIssue> al){
 
         logger.info("comparing Email hashmap values and Rules defined in DB for matches");
 
@@ -28,7 +32,7 @@ public class CompareEmailandRulesData {
         while (hmIterator.hasNext()) {
             Map.Entry mapElement = (Map.Entry)hmIterator.next();
             int count = ((int)mapElement.getValue());
-            foreach(ExistingIssues e:al){
+            for(ExistingIssue e : al){
                 if(a.getIssuename().split(" ")[0] == mapElement){
                     int DbCount=a.getCount();
                     if(count >= Dbcount){

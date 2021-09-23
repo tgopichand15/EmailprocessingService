@@ -1,8 +1,13 @@
 package com.example.EmailProcessingservice;
 
 import com.example.RulesService.entities.ExistingIssues;
+import com.example.entities.ExistingIssue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 
 public class FetchRulesClient {
@@ -15,14 +20,18 @@ public class FetchRulesClient {
 
     private final String issueUrl = "https://localhost:8080/issues_list/";
 
-    @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    public FetchRulesClient(RestTemplate r){
+        this.restTemplate=r;
+    }
 
 
 
 
     //fetching issues that are listed in Rules service Db via API call
-    public List<ExistingIssues> getIssues(){
+    public List<ExistingIssue> getIssues(){
 
 
         logger.info("fetching issues from existing issues list Rules service");
