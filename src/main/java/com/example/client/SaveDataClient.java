@@ -31,7 +31,7 @@ public class SaveDataClient {
 
 
 
-	private static void createEmployee(Session session) {
+	private static void createEmployee() {
 		logger.info("creating employee which is to be inserted into DB");
 		session.beginTransaction();
 		Integer id =(Integer)session.save(getIssue());
@@ -42,13 +42,19 @@ public class SaveDataClient {
 	}
 
 
-	private static void createHistoricalIssue(Session session,HistoricalIssue h) {
-		logger.info("creating a historical issue into DB");
-		session.beginTransaction();
-		Integer id =(Integer)session.save(h);
-		System.out.println("HistoricalIssue is created  with Id::"+id);
-		logger.info("HistoricalIssue creation is successful with id "+id);
-		session.getTransaction().commit();
+	private static void createHistoricalIssue(HistoricalIssue h) {
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+			session.beginTransaction();
+			Integer id = (Integer) session.save(h);
+			System.out.println("HistoricalIssue is created  with Id::" + id);
+			logger.info("HistoricalIssue creation is successful with id " + id);
+			session.getTransaction().commit();
+		}
+		catch (HibernateException e) {
+			logger.error("creating Historical issue failed with exception"+e.printStackTrace());
+			e.printStackTrace();
+		}
 
 	}
 
@@ -68,25 +74,31 @@ public class SaveDataClient {
 	}
 
 
-	private static void updateEmployeeById(Session session){
+	private static void updateEmployeeById(int id) {
 
-		logger.info("getting data of employee with id 1");
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-		Employee e=session.get(Employee.class,1);
 
-		if(e==null){
-			System.out.println("employed with provided id does not exist");
-		}
-		else{
-			e.setSalary(50000);
-			session.beginTransaction();
+			logger.info("getting data of employee with id "+id);
 
-			session.update(e);
+			Employee e = session.get(Employee.class, id);
 
-			logger.info("updated data of record with id" + id );
+			if (e == null) {
+				System.out.println("employed with provided id does not exist");
+			} else {
+				e.setSalary(50000);
+				session.beginTransaction();
 
-			session.getTransaction().commit();
-			System.out.println(e);
+				session.update(e);
+
+				logger.info("updated data of record with id" + id);
+
+				session.getTransaction().commit();
+				System.out.println(e);
+			}
+		} catch (HibernateException e) {
+			logger.error("updating employeebyid issue failed with exception" + e.printStackTrace());
+			e.printStackTrace();
 		}
 	}
 
