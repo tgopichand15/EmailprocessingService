@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-th dummy input and also specifying return value as predefined
-        when(r.getUnresolvedIssues(hm,l).thenReturn(hm1);
+
 public class FetchFieldsTest {
 
     //preparing data
@@ -24,13 +23,13 @@ public class FetchFieldsTest {
     FtechFields f=new FetchFields();
 
     @Test
-    public boolean checkFields(){
+    public void checkFields(){
         HashMap<String,Integer> output=f.getIssueData(email);
 
         if(hm.contains("10.20.30.245 cpu") && hm.get("10.20.30.245 cpu") ==1){
-            return true;
+            Success("succeded")
         }
-        return false;
+
     }
 
 }

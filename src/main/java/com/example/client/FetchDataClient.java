@@ -1,6 +1,6 @@
 package com.example.client;
 
-import com.example.entities.Issues;
+import com.example.entities.Issue;
 import com.example.util.HibernateUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,17 +13,18 @@ public class FetchDataClient {
 
 	private static final Logger logger = LogManager.getLogger(FetchDataClient.class);
 
-	public static void main(String[] args) {
+	public Issue getIssue() {
 		Issues issues = null;
 		logger.info("getting  issue with id 1 from DB");
-	    try(Session session = HibernateUtil.getSessionFactory().openSession()) {
-	    	issues = session.get(Issues.class, 1);
-	    	logger.infoe("fetched value is "+issues);
-	    	System.out.println(issues);
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			issues = session.get(Issues.class, 1);
+			logger.infoe("fetched value is " + issues);
+			System.out.println(issues);
 		} catch (HibernateException e) {
-	    	logger.error("Exception while fetching value from Issues table "+e.printStackTrace());
+			logger.error("Exception while fetching value from Issues table " + e.printStackTrace());
 			e.printStackTrace();
 		}
+	}
 
        /* public static Issues getCount(String Hostname){
             Query query = session.createQuery("SELECT count FROM Issues i WHERE i.host=:Hostname");
@@ -57,6 +58,5 @@ public class FetchDataClient {
 				System.out.println(e);
 			}
 		}*/
-	    
-	  }
+
 }

@@ -60,7 +60,7 @@ public class SaveDataClient {
 
 	}
 	
-	private static Issues getIssue(){
+	private static Issue getIssue(){
 		Issues issues=new Issues();
 		issues.setIssuename("CPU 10.20.30.238");
 		issues.setIsProcessed(1);
@@ -180,5 +180,8 @@ public class SaveDataClient {
 			e.printStackTrace();
 		}
 	}
+
+
+
 
 }

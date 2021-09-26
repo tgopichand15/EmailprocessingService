@@ -30,7 +30,7 @@ public class CompareDateTest {
 
 
     @Test
-    public boolean compareEmailAndRulesdata(HashMap<String,Integer> hm,ArrayList<ExistingIssue> l){
+    public boolean void(HashMap<String,Integer> hm,ArrayList<ExistingIssue> l){
 
 
 

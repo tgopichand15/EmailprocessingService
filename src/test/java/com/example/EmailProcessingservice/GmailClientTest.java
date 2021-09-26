@@ -13,7 +13,7 @@ public class GmailClientTest {
     when(r.check().thenReturn(l);
 
     @Test
-    public boolean checkmails(){
+    public void checkmails(){
 
         GmailClient g=new GmailClient();
         ArrayList<String> output=g.check();
