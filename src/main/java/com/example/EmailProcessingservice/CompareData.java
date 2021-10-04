@@ -1,4 +1,4 @@
-package com.example.EmailProcessingservice;
+/*package com.example.EmailProcessingservice;
 
 import com.example.RulesService.entities.ExistingIssues;
 import com.example.entities.ExistingIssue;
@@ -7,10 +7,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class CompareData {
 
-    private static final Logger logger = LogManager.getLogger(CompareEmailandRulesData.class);
+    private static final Logger logger = LogManager.getLogger(CompareData.class);
 
 
 
@@ -22,7 +24,7 @@ public class CompareData {
         if(hm.isEmpty() || al.size() ==0){
             logger.info("hashmap for emails empty to chech in DB");
             System.out.println("no Entries to check or no issues in Db");
-            return;
+            return null;
         }
 
         Iterator hmIterator = hm.entrySet().iterator();
@@ -33,8 +35,8 @@ public class CompareData {
             Map.Entry mapElement = (Map.Entry)hmIterator.next();
             int count = ((int)mapElement.getValue());
             for(ExistingIssue e : al){
-                if(a.getIssuename().split(" ")[0] == mapElement){
-                    int DbCount=a.getCount();
+                if(e.getIssuename().split(" ")[0] == mapElement){
+                    int DbCount=e.getCount();
                     if(count >= Dbcount){
                          logger.info("issue found in Hashmap which has to be ticketed");
                         issueToBeTicketed.put(a.getIssuename.split(" ")[0],a.getIssuename.split(" ")[1]);
@@ -64,4 +66,4 @@ public class CompareData {
 
 
     }
-}
+}*/

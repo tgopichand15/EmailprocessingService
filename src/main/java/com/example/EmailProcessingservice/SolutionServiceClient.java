@@ -1,4 +1,4 @@
-package com.example.EmailProcessingservice;
+/*package com.example.EmailProcessingservice;
 
 import com.example.entities.ExistingIssue;
 import com.example.entities.UnresolvedIssue;
@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 public class SolutionServiceClient {
     private static final Logger logger = LogManager.getLogger(SolutionServiceClient.class);
@@ -24,7 +26,7 @@ public class SolutionServiceClient {
 
 
 
-    public  List<UnresolvedIssue> getIssues(){
+    public List<UnresolvedIssue> getIssues(){
 
         logger.info("ferching list of unresolved issues from Action service via Interservice communincation calling api /Action_service");
 
@@ -54,6 +56,7 @@ public class SolutionServiceClient {
         logger.info("issues to be forwarded to action service from solution service is "+l);
 
         return l;
-    }*/
+    }
 
 }
+*/

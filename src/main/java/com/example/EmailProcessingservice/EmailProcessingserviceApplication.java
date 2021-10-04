@@ -1,5 +1,6 @@
-package com.example.EmailProcessingservice;
+/*package com.example.EmailProcessingservice;
 
+import com.example.entities.ExistingIssue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ApplicationContext;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 @SpringBootApplication
@@ -23,10 +26,10 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 		ApplicationContext ctx = SpringApplication.run(EmailProcessingserviceApplication.class, args);
 
 		@Autowired
-		private  GmailClient gmailclient;
+		public  GmailClient gmailclient;
 
 		@Autowired
-		private FetchFields fetchfields;
+		public FetchFields fetchfields;
 
 		//data removing duplicates
 
@@ -36,20 +39,23 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 
 
 		@Autowired
-		private SaveDataClientTest savedataclienttest;
+		public SaveDataClientTest savedataclienttest;
 
 		logger.info("fetching existing rules from Rules service so that it can be compared with Mail data");
+
+
+		savedataclienttest.createIssueforProcessingintoDB()
 		@Autowired
-		private FetchRulesClient fetchrules;
+		public FetchRulesClient fetchrules;
 		//fetching existing rules from Rules service
-		ArrayList<ExistingIssues> rules=fetchrules.getIssues();
+		ArrayList<ExistingIssue> rules=fetchrules.getIssues();
 
 
         @Autowired
-		private SolutionServiceClient fetchissues;
+		public SolutionServiceClient fetchissues;
 
         logger.info("fetching issues to be taken action from end of soluton service");
-        ArrayList<Issues> a=fetchissues.getIssues();
+        ArrayList<Issue> a=fetchissues.getIssues();
 
 
         //test
@@ -57,4 +63,4 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 
 
 	}
-}
+}*/

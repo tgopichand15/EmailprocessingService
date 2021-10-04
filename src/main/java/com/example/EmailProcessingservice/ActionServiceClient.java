@@ -1,4 +1,4 @@
-package com.example.EmailProcessingservice;
+/*package com.example.EmailProcessingservice;
 
 import com.example.client.SaveDataClient;
 import com.example.entities.UnresolvedIssue;
@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-public class ActionServiceClient {
+/*public class ActionServiceClient {
 
     private static final Logger logger = LogManager.getLogger(ActionServiceClient.class);
 
@@ -32,7 +32,7 @@ public class ActionServiceClient {
 
 
         //Parse the string after getting the response
-        List<unResolvedIssues> l = restTemplate.getForObject(actionServiceGetIssuesEndpointUrl, String.class);
+        List<UnresolvedIssueesolvedIssue> l = restTemplate.getForObject(actionServiceGetIssuesEndpointUrl, String.class);
 
         // get 10
 
@@ -63,4 +63,4 @@ public class ActionServiceClient {
 
 
 
-}
+}*/

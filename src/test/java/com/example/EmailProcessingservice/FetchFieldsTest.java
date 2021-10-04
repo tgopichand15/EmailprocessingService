@@ -1,4 +1,4 @@
-package com.example.EmailProcessingservice;
+/*package com.example.EmailProcessingservice;
 
 
 import org.junit.jupiter.api.Test;
@@ -32,4 +32,4 @@ public class FetchFieldsTest {
 
     }
 
-}
+}*/

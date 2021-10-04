@@ -13,6 +13,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hiberante.format_sql">true</property>
-        <mapping class="com.example.entities.Issues"/>
+        <mapping class="com.example.entities.Issue"/>
+        <mapping class="com.example.entities.UnprocesedIssue"/>
     </session-factory>
 </hibernate-configuration>

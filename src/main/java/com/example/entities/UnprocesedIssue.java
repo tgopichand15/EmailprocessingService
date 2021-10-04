@@ -3,7 +3,7 @@ package com.example.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Issues_to_be_processed")
+@Table(name="unprocessedIssue")
 public class UnprocesedIssue {
 
     @Id
@@ -12,13 +12,13 @@ public class UnprocesedIssue {
     private int id;
 
     @Column(name="issueName")
-    private String issueName;
+    public String issueName;
 
     @Column(name="hostname")
-    private String hostname;
+    public String hostname;
 
     @Column(name="frequency")
-    private int frequency;
+    public int frequency;
 
     @Column(name="Description")
     private String Description;
@@ -66,7 +66,7 @@ public class UnprocesedIssue {
 
     @Override
     public String toString() {
-        return "UnprocessedIssues{" +
+        return "UnprocessedIssue{" +
                 "id=" + id +
                 ", issueName='" + issueName + '\'' +
                 ", hostname='" + hostname + '\'' +

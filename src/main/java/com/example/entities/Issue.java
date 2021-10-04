@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.xml.ws.WebServiceProvider;
 
 @Entity
-@Table(name="Issues")
+@Table(name="Issue")
 public class Issue {
 
 
@@ -17,7 +17,7 @@ public class Issue {
     @Column(name = "Issue_name")
     private String Issuename;
 
-    @column(name="hostname")
+    @Column(name="hostname")
     private String hostname;
 
     @Column(name = "isProcessed")

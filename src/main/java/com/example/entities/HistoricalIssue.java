@@ -8,7 +8,7 @@ public class HistoricalIssue {
 
     @Id
     @Column(name="HistoricalIssue_id")
-    @GeneratedValue(Strategy=GenerationType.IDENTITy)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     int id;
 
     @Column(name="Issue_name")

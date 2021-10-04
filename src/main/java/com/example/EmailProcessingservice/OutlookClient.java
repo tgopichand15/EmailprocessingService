@@ -1,4 +1,4 @@
-package com.example.EmailProcessingservice;
+//package com.example.EmailProcessingservice;
 
 //public class OutlookClient implements Email throws Exception {
 

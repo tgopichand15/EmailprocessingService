@@ -1,4 +1,4 @@
-package com.example.EmailProcessingservice;
+/*package com.example.EmailProcessingservice;
 
 import com.example.RulesService.entities.ExistingIssues;
 import com.example.entities.ExistingIssue;
@@ -37,7 +37,7 @@ public class FetchRulesClient {
         logger.info("fetching issues from existing issues list Rules service");
 
         //Parse the string after getting the response
-        List<ExistingIssues> l = restTemplate.getForObject(issueUrl, String.class);
+        List<ExistingIssue> l = restTemplate.getForObject(issueUrl, String.class);
 
         logger.info("getched issues list from rules service "+l);
 
@@ -47,4 +47,4 @@ public class FetchRulesClient {
 
 
 
-}
+}*/
