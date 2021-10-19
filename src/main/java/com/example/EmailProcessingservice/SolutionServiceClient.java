@@ -1,62 +1,54 @@
-/*package com.example.EmailProcessingservice;
+package com.example.EmailProcessingservice;
 
 import com.example.entities.ExistingIssue;
-import com.example.entities.UnresolvedIssue;
+//import com.example.entities.UnresolvedIssue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-public class SolutionServiceClient {
+public class SolutionServiceClient extends Thread {
     private static final Logger logger = LogManager.getLogger(SolutionServiceClient.class);
 
 
-    private final String SolutionURL = "https://localhost:8080/Action_service/get";
+    private final String SolutionURL = "http://localhost:8766/Issues_to_be_forwared_to_actionService";
 
-    private RestTemplate restTemplate;
-
-
-    @Autowired
-    public SolutionServiceClient(RestTemplate r) {
-        this.restTemplate=r;
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 
 
-
-    public List<UnresolvedIssue> getIssues(){
+    public List<String> getIssues(){
 
         logger.info("ferching list of unresolved issues from Action service via Interservice communincation calling api /Action_service");
 
 
+        RestTemplate restTemplate=new RestTemplate();
         //Parse the string after getting the response
-        List<UnresolvedIssue> l = restTemplate.getForObject(SolutionURL, String.class);
 
 
-        logger.info("fetched unresolved issues from Actionservice "+l);
 
-        return l;
+            System.out.println(restTemplate.getForObject(SolutionURL, Object.class));
+
+
+
+        //logger.info("fetched unresolved issues from Actionservice "+l);
+
+        return null;
     }
 
 
-
-
-
-    //fetching issues that are listed in Rules service Db via API call
-    /*public List<ExistingIssue> getIssues(){
-
-        logger.info("calling issues after solution service which are to be forwarded to Action service");
-
-
-        //Parse the string after getting the response
-        List<Issue> l = restTemplate.getForObject(SolutionServiceUrl, String.class);
-
-        logger.info("issues to be forwarded to action service from solution service is "+l);
-
-        return l;
+    public static void main(String args[]){
+        SolutionServiceClient s=new SolutionServiceClient();
+        s.getIssues();
+        //System.out.println(s.start());
     }
+
+
 
 }
-*/

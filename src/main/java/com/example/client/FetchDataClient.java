@@ -1,4 +1,4 @@
-/*package com.example.client;
+package com.example.client;
 
 import com.example.entities.Issue;
 import com.example.util.HibernateUtil;
@@ -15,7 +15,7 @@ public class FetchDataClient {
 
 	public Issue getIssue() {
 		Issue issues = null;
-		l//ogger.info("getting  issue with id 1 from DB");
+		//ogger.info("getting  issue with id 1 from DB");
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			issues = session.get(Issue.class, 1);
 			logger.info("fetched value is " + issues);
@@ -24,6 +24,8 @@ public class FetchDataClient {
 			//logger.error("Exception while fetching value from Issues table " + e.printStackTrace());
 			e.printStackTrace();
 		}
+
+		return null;
 	}
 
        /* public static Issues getCount(String Hostname){
@@ -57,6 +59,6 @@ public class FetchDataClient {
 				logger.info("updated salary value successfully");
 				System.out.println(e);
 			}
-		}
+		}*/
 
-}*/
+}

@@ -9,11 +9,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-/*public class ActionServiceClient {
+public class ActionServiceClient {
 
     private static final Logger logger = LogManager.getLogger(ActionServiceClient.class);
 
-    private final String ACTION_URL = "https://localhost:8080/Action_service/get";
+    private final String ACTION_URL = "http://localhost:8766/Issues_to_be_forwared_to_actionService";
 
     private RestTemplate restTemplate;
 
@@ -32,7 +32,7 @@ import java.util.List;
 
 
         //Parse the string after getting the response
-        List<UnresolvedIssueesolvedIssue> l = restTemplate.getForObject(actionServiceGetIssuesEndpointUrl, String.class);
+        List<UnresolvedIssuee> l = restTemplate.getForObject(actionServiceGetIssuesEndpointUrl, String.class);
 
         // get 10
 

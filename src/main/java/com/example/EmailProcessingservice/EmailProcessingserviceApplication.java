@@ -1,4 +1,4 @@
-/*package com.example.EmailProcessingservice;
+package com.example.EmailProcessingservice;
 
 import com.example.entities.ExistingIssue;
 import org.apache.logging.log4j.LogManager;
@@ -9,27 +9,53 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 @SpringBootApplication
 @EnableEurekaClient
-public class EmailProcessingserviceApplication extends SpringBootServletInitializer {
+public class EmailProcessingserviceApplication  {
 
 	private static final Logger LOGGER = LogManager.getLogger(EmailProcessingserviceApplication.class);
 
 
-	public static void main(String[] args)
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+
+
+    @Autowired
+    static FetchRulesClient fetchrules;
+
+
+    @Autowired
+     private static RestTemplate restTemplate;
+
+
+
+    public static void main(String[] args)
 	{
 		ApplicationContext ctx = SpringApplication.run(EmailProcessingserviceApplication.class, args);
 
-		@Autowired
+        SpringApplication.run(EmailProcessingserviceApplication.class, args);
+
+        System.out.println(fetchrules.getIssues(fetchrules));
+
+
+		/*@Autowired
 		public  GmailClient gmailclient;
 
 		@Autowired
 		public FetchFields fetchfields;
+
+
+
 
 		//data removing duplicates
 
@@ -44,18 +70,20 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 		logger.info("fetching existing rules from Rules service so that it can be compared with Mail data");
 
 
-		savedataclienttest.createIssueforProcessingintoDB()
-		@Autowired
-		public FetchRulesClient fetchrules;
+		savedataclienttest.createIssueforProcessingintoDB()*/
+
 		//fetching existing rules from Rules service
-		ArrayList<ExistingIssue> rules=fetchrules.getIssues();
+		//List<ExistingIssue> rules=restTemplate.getIssues(fetchrules);
 
 
-        @Autowired
+		//System.out.println("rules are "+rules);
+
+
+        /*@Autowired
 		public SolutionServiceClient fetchissues;
 
         logger.info("fetching issues to be taken action from end of soluton service");
-        ArrayList<Issue> a=fetchissues.getIssues();
+        ArrayList<Issue> a=fetchissues.getIssues();*/
 
 
         //test
@@ -63,4 +91,4 @@ public class EmailProcessingserviceApplication extends SpringBootServletInitiali
 
 
 	}
-}*/
+}

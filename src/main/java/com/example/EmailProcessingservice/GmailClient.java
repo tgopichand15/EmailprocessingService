@@ -1,4 +1,5 @@
 
+package com.example.EmailProcessingservice;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -142,6 +143,8 @@ public class GmailClient {
         }
         return "";
     }
+
+
 
 
 

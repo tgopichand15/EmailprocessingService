@@ -1,32 +1,22 @@
-package com.example.entities;
+/*package com.example.entities;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 public class UnresolvedIssue {
-
     @Id
-    @Column(name="issue_id")
+    @Column(name="issueId")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    int id;
 
-    @Column(name="assignedtoteam")
-    private String assignedToTeam;
+    @Column(name="issuename")
+    private String issuename;
 
-    @Column(name="issuetype")
-    private String issuetype;
+    @Column(name="hostname")
+    private String hostname;
 
-    public String getIssuetype() {
-        return issuetype;
-    }
-
-    public void setIssuetype(String issuetype) {
-        this.issuetype = issuetype;
-    }
-
-    @Column(name="Hostname")
-    private String Hostname;
+    @Column(name="count")
+    private int count;
 
     public int getId() {
         return id;
@@ -36,47 +26,37 @@ public class UnresolvedIssue {
         this.id = id;
     }
 
-    public String getAssignedToTeam() {
-        return assignedToTeam;
+    public String getIssuename() {
+        return issuename;
     }
 
-    public void setAssignedToTeam(String assignedToTeam) {
-        this.assignedToTeam = assignedToTeam;
+    public void setIssuename(String issuename) {
+        this.issuename = issuename;
     }
 
     public String getHostname() {
-        return Hostname;
+        return hostname;
     }
 
     public void setHostname(String hostname) {
-        Hostname = hostname;
+        this.hostname = hostname;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UnresolvedIssue that = (UnresolvedIssue) o;
-        return id == that.id &&
-                Objects.equals(assignedToTeam, that.assignedToTeam) &&
-                Objects.equals(issuetype, that.issuetype) &&
-                Objects.equals(Hostname, that.Hostname);
+    public int getCount() {
+        return count;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, assignedToTeam, issuetype, Hostname);
+    public void setCount(int count) {
+        this.count = count;
     }
-
 
     @Override
     public String toString() {
         return "UnresolvedIssue{" +
                 "id=" + id +
-                ", assignedToTeam='" + assignedToTeam + '\'' +
-                ", issuetype='" + issuetype + '\'' +
-                ", Hostname='" + Hostname + '\'' +
+                ", issuename='" + issuename + '\'' +
+                ", hostname='" + hostname + '\'' +
+                ", count=" + count +
                 '}';
     }
-}
-
+}*/

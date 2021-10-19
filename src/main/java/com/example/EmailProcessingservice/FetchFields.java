@@ -2,6 +2,7 @@
 
 
 //import com.example.util.HibernateUtil;
+import com.example.EmailProcessingservice.GmailClient;
 import com.example.client.SaveDataClient;
 import com.example.entities.Issue;
 import com.example.util.HibernateUtil;
